@@ -103,18 +103,23 @@
   .aside .t{color:var(--ink);font-weight:600;font-size:14.5px;display:block;margin-bottom:6px}
   .aside code{background:var(--panel2);border:1px solid var(--line);border-radius:5px;
     padding:1px 5px;font-size:12.5px;color:#cdd9e4}
-  .caveat{font-size:13.5px;color:var(--muted);border-left:2px solid var(--line);
-    padding-left:14px;margin:24px 0 4px}
+  .caveat{font-size:14px;color:var(--muted);border-left:2px solid var(--line);
+    padding-left:14px;margin:24px 0 4px;max-width:68ch}
   .footer{border-top:1px solid var(--line);margin-top:30px;padding:26px 0 70px;color:var(--muted);font-size:13.5px}
   .footer h3{color:var(--ink);font-size:15px;margin:0 0 8px}
   .footer ul{margin:.4em 0;padding-left:18px}
-  /* Prose flows into as many ~420px columns as the width allows, so it fills
-     the same edges as the map instead of stopping short, without ever turning
-     into 130-character lines. Collapses to one column on narrow screens. */
-  .lede,.explain,.sec-intro,.caveat,.footer ul{column-width:420px;column-gap:46px}
-  .aside{column-width:420px;column-gap:46px}
-  .aside .t{column-span:all}
-  .aside ul,.footer li{break-inside:avoid}
+  /* The hero intro is one continuous column flow (lede + explanation together),
+     so paragraphs break at column boundaries rather than the lede being split
+     into its own stubby two-column block. */
+  .intro,.footer ul{column-width:420px;column-gap:46px}
+  .intro .lede{margin-top:0}
+  .footer li{break-inside:avoid}
+  /* Consequences: prose on the left, the WBGT explainer alongside it. */
+  .intro-row{display:grid;grid-template-columns:1fr 1fr;gap:46px;align-items:start;margin:.4em 0 0}
+  .intro-row .sec-lede:first-child{margin-top:0}
+  .intro-row .aside{margin-top:0;height:100%}
+  @media(max-width:900px){.intro-row{grid-template-columns:1fr;gap:6px}
+    .intro-row .aside{height:auto}}
   @media(max-width:640px){.stats{grid-template-columns:repeat(2,1fr)}}
 </style>
 </head>
@@ -122,6 +127,7 @@
 <header class="hero"><div class="wrap">
   <div class="kicker">Humid-heat in a warming climate</div>
   <h1>How hot does it really get? Extreme wet-bulb temperatures across U.S. cities</h1>
+  <div class="intro">
   <p class="lede">Dry-bulb air temperature tells only half the story. <b>Wet-bulb temperature</b> — what a
   thermometer reads when wrapped in a wet cloth — folds in humidity, and it is the number that actually
   governs whether the human body can shed heat. Past a critical wet-bulb value, sweat can no longer
@@ -155,6 +161,7 @@
     therefore rises far faster — and arrives far earlier — than any “projected year” implies, and it rises
     fastest in exactly the cities whose lines are climbing fastest.</p>
   </div>
+  </div>
   <div class="pills" id="pills"></div>
 </div></header>
 
@@ -177,6 +184,7 @@
 <section class="impact"><div class="wrap">
   <div class="sec-kicker">Consequences</div>
   <h2 class="sec-h">What a threshold day would actually look like</h2>
+  <div class="intro-row">
   <div class="sec-intro">
   <p class="sec-lede">87&nbsp;°F is not the point at which heat becomes unpleasant. It is the point at which a
   <b>healthy young adult doing almost nothing</b> — seated or walking slowly, in shade, drinking freely — can no
@@ -211,6 +219,7 @@
     Every WBGT figure on this page is an estimate converted from the wet-bulb and dry-bulb values actually in the
     record — and a conservative one, since NOAA reports a shaded, aspirated wet-bulb that reads lower than the true
     natural wet-bulb the index calls for.</p>
+  </div>
   </div>
 
   <div class="cards">
