@@ -17,13 +17,13 @@
     font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
     -webkit-font-smoothing:antialiased;line-height:1.55}
   a{color:var(--accent)}
-  .wrap{max-width:864px;margin:0 auto;padding:0 22px}
+  .wrap{max-width:1240px;margin:0 auto;padding:0 22px}
   header.hero{padding:64px 0 34px;border-bottom:1px solid var(--line);
     background:radial-gradient(1200px 400px at 50% -120px,rgba(70,179,230,.16),transparent)}
   .kicker{letter-spacing:.16em;text-transform:uppercase;font-size:12px;color:var(--accent);font-weight:600}
   h1{font-size:clamp(28px,4.4vw,46px);line-height:1.08;margin:.35em 0 .35em;letter-spacing:-.02em}
-  .lede{font-size:18px;color:var(--muted)}
-  .explain{margin:26px 0 6px;color:#cdd9e4;font-size:15.5px}
+  .lede{font-size:19.5px;color:var(--muted)}
+  .explain{margin:26px 0 6px;color:#cdd9e4;font-size:17px}
   .explain p{margin:.7em 0}
   .pills{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0 2px}
   .pill{background:var(--panel);border:1px solid var(--line);border-radius:999px;
@@ -91,8 +91,8 @@
   section.impact{padding:40px 0 6px;border-top:1px solid var(--line);margin-top:34px}
   .sec-kicker{letter-spacing:.16em;text-transform:uppercase;font-size:12px;color:var(--hot);font-weight:600}
   .sec-h{font-size:clamp(22px,3vw,31px);line-height:1.15;letter-spacing:-.015em;margin:.3em 0 .45em}
-  .sec-lede{color:#cdd9e4;font-size:15.5px;margin:.7em 0}
-  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(268px,1fr));gap:14px;margin:26px 0 4px}
+  .sec-lede{color:#cdd9e4;font-size:17px;margin:.7em 0}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:14px;margin:26px 0 4px}
   .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:17px 18px}
   .card .k{font-size:11.5px;color:var(--warn);text-transform:uppercase;letter-spacing:.07em;font-weight:600}
   .card h4{margin:6px 0 7px;font-size:16px;letter-spacing:-.01em}
@@ -108,6 +108,13 @@
   .footer{border-top:1px solid var(--line);margin-top:30px;padding:26px 0 70px;color:var(--muted);font-size:13.5px}
   .footer h3{color:var(--ink);font-size:15px;margin:0 0 8px}
   .footer ul{margin:.4em 0;padding-left:18px}
+  /* Prose flows into as many ~420px columns as the width allows, so it fills
+     the same edges as the map instead of stopping short, without ever turning
+     into 130-character lines. Collapses to one column on narrow screens. */
+  .lede,.explain,.sec-intro,.caveat,.footer ul{column-width:420px;column-gap:46px}
+  .aside{column-width:420px;column-gap:46px}
+  .aside .t{column-span:all}
+  .aside ul,.footer li{break-inside:avoid}
   @media(max-width:640px){.stats{grid-template-columns:repeat(2,1fr)}}
 </style>
 </head>
@@ -170,6 +177,7 @@
 <section class="impact"><div class="wrap">
   <div class="sec-kicker">Consequences</div>
   <h2 class="sec-h">What a threshold day would actually look like</h2>
+  <div class="sec-intro">
   <p class="sec-lede">87&nbsp;°F is not the point at which heat becomes unpleasant. It is the point at which a
   <b>healthy young adult doing almost nothing</b> — seated or walking slowly, in shade, drinking freely — can no
   longer hold core body temperature steady. Everything that asks a person to exert themselves outdoors fails well
@@ -181,6 +189,7 @@
   case — 82&nbsp;°F wet-bulb beside a 110&nbsp;°F afternoon — lands in the same range. That sits at or above the
   <i>top</i> category of essentially every heat-activity guideline in use, the level at which the standard
   instruction is not to modify the activity but to call it off.</p>
+  </div>
 
   <div class="aside">
     <span class="t">What is WBGT — and why isn’t it the same as wet-bulb?</span>
